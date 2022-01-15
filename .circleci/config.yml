@@ -15,6 +15,8 @@ jobs:
             npm install
             npm run build
             exit 1
+          environment:
+            API_URL: http://localhost:3030
       - save_cache:
           paths: [frontend/node_modules]
           key: frontend-build
@@ -33,6 +35,8 @@ jobs:
             npm install
             npm run build
             exit 1
+          environment:
+            API_URL: http://localhost:3030
       - save_cache:
           paths: [backend/node_modules]
           key: backend-build
