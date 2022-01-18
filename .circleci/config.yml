@@ -138,7 +138,7 @@ jobs:
       - run:
           name: Add back-end ip to ansible inventory
           command: |
-            echo aws cloudformation list-exports --query "Exports[?Name==\'${CIRCLE_WORKFLOW_ID:0:7}-PublicIp\'].Value" --no-paginate --output text >> ansible/inventory.txt
+            echo aws cloudformation list-exports --query "Exports[?Name=='${CIRCLE_WORKFLOW_ID:0:7}-PublicIp'].Value" --no-paginate --output text >> .circleci/ansible/inventory.txt
       - persist_to_workspace:
           root: ~/
           paths:
