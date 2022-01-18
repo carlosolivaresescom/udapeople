@@ -184,9 +184,20 @@ jobs:
       - restore_cache:
           keys: [backend-build]
       - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache tar
+            apk add --no-cache \
+            python3 \
+            py3-pip \
+            && pip3 install --upgrade pip \
+            && pip3 install \
+                awscli \
+            && rm -rf /var/cache/apk/*
+      - run:
           name: Run migrations
           command: |
-            d backend
+            cd backend
             npm install
             npm run migrations > migrations_dump.txt
       - run:
