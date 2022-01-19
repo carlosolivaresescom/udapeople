@@ -214,9 +214,8 @@ jobs:
           command: |
             yum install -y tar gzip
             yum install -y python3
-            pip3 install npm
-            pip3 install nodejs
-            pip3 install ansible
+            dnf install npm
+            dnf install ansible
       - run:
           name: Get backend url
           command: |
