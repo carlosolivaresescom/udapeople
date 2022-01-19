@@ -214,10 +214,8 @@ jobs:
           command: |
             yum install -y tar gzip
             yum install -y python3
-            yum install -y ansible
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-            . ~/.nvm/nvm.sh
-            nvm install node
+            pip3 install nodejs
+            pip3 install ansible
       - run:
           name: Get backend url
           command: |
