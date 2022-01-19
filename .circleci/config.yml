@@ -214,7 +214,6 @@ jobs:
           command: |
             yum install -y tar gzip
             yum install -y python3
-            yum update
             yum install -y epel-release
             yum install -y nodejs
             yum install -y ansible
