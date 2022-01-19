@@ -214,6 +214,8 @@ jobs:
           command: |
             yum install -y tar gzip
             yum install -y python3
+            yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+            yum install dnf -y
             dnf install npm
             dnf install ansible
       - run:
