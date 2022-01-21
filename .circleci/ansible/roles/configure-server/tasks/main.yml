@@ -22,4 +22,4 @@
 
 - name: ENV
   shell: |
-    EXPORT TYPEORM_CONNECTION = $("{{ lookup('env', 'TYPEORM_CONNECTION')}}")
+    export TYPEORM_CONNECTION = $("{{ lookup('env', 'TYPEORM_CONNECTION')}}")
