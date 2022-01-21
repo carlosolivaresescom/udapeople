@@ -35,7 +35,7 @@
     state: directory
 
 - name: Copy index test page
-  template:
+  ansible.builtin.unarchive:
     src: artifact.tar.gz
     dest: /home/ubuntu/backend
 
