@@ -297,3 +297,5 @@ workflows:
             - SLACK_CONTEXT
       - deploy-infrastructure:
           requires: [test-frontend, test-backend, scan-frontend, scan-backend]
+      - configure-infrastructure:
+          requires: [deploy-infrastructure]
