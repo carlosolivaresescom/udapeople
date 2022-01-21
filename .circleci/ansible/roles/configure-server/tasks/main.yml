@@ -22,4 +22,4 @@
 
 - name: ENV
   shell: |
-    export TYPEORM_CONNECTION = 'test'
+    export TYPEORM_CONNECTION=0
