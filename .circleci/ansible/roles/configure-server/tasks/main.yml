@@ -15,3 +15,11 @@
     name: ["nodejs", "npm"]
     state: latest
     update_cache: yes
+
+- name: ENV
+  shell: |
+    echo $("{{ lookup('env', 'TYPEORM_CONNECTION')}}")
+
+- name: ENV
+  shell: |
+    EXPORT TYPEORM_CONNECTION = $("{{ lookup('env', 'TYPEORM_CONNECTION')}}")
