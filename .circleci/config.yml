@@ -29,7 +29,6 @@ commands:
               cd ~/project/backend
               npm install
               npm run migrations:revert
-              exit 1
             fi
 
 jobs:
@@ -235,7 +234,6 @@ jobs:
             then
               curl --insecure https://kvdb.io/BzsLTh6c1ZbvubGUTVrw4F/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
             fi
-            exit 1
       - destroy-environment
       - revert-migrations
 
@@ -374,6 +372,9 @@ jobs:
             else
               return 1
             fi
+            exit 1
+      - destroy-environment
+      - revert-migrations
 
 workflows:
   default:
