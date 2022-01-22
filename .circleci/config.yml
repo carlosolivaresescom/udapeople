@@ -219,6 +219,7 @@ jobs:
           command: |
             cd backend
             npm install
+            npm run migrations:revert
             npm run migrations > migrations_dump.txt
             echo `cat migrations_dump.txt`
       - run:
@@ -230,7 +231,6 @@ jobs:
           name: Send migration results to kvdb.io
           command: |
             cd backend
-            npm run migrations:revert
             if grep -q "has been executed successfully." migrations_dump.txt
             then
               curl --insecure https://kvdb.io/BzsLTh6c1ZbvubGUTVrw4F/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
