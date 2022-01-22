@@ -18,6 +18,7 @@
 
 - name: ENV
   shell: |
+    export TEST=12
     export TYPEORM_CONNECTION=$("{{ lookup('env', 'TYPEORM_CONNECTION')}}")
     export TYPEORM_ENTITIES=$("{{ lookup('env', 'TYPEORM_ENTITIES')}}")
     export TYPEORM_HOST=$("{{ lookup('env', 'TYPEORM_HOST')}}")
