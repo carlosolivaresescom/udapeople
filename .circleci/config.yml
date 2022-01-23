@@ -198,6 +198,11 @@ jobs:
             ansible-playbook -i inventory.txt configure-server.yml
           environment:
             ANSIBLE_HOST_KEY_CHECKING: false
+      - run:
+          name: Install prometheus node_exporter
+          command: |
+            cd .circleci/ansible
+            ansible-playbook -i inventory.txt add-node-exporter.yml
       - destroy-environment
 
   run-migrations:
