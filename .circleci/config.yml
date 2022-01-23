@@ -377,7 +377,7 @@ jobs:
 
   cloudfront-update:
     docker:
-      - image: amazon/aws-cli
+      - image: python:3.7-alpine3.11
     steps:
       - checkout
       - attach_workspace:
@@ -385,7 +385,15 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            # your code here
+            apk add --no-cache \
+            python3 \
+            py3-pip \
+            && pip3 install --upgrade pip \
+            && pip3 install \
+                awscli \
+            && rm -rf /var/cache/apk/*
+            apk add --update npm
+            apk add curl
       - run:
           name: Update cloudfront distribution
           command: |
@@ -403,11 +411,23 @@ jobs:
 
   cleanup:
     docker:
-      - image: amazon/aws-cli
+      - image: python:3.7-alpine3.11
     steps:
       - checkout
       - attach_workspace:
           at: ~/
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache \
+            python3 \
+            py3-pip \
+            && pip3 install --upgrade pip \
+            && pip3 install \
+                awscli \
+            && rm -rf /var/cache/apk/*
+            apk add --update npm
+            apk add curl
       - run:
           name: Get old stack workflow id
           command: |
