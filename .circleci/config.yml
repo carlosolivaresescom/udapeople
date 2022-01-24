@@ -459,13 +459,7 @@ workflows:
   default:
     jobs:
       - build-frontend
-          filters:
-            branches:
-              only: [dev, master]
       - build-backend
-          filters:
-            branches:
-              only: [dev, master]
       - test-frontend:
           filters:
             branches:
