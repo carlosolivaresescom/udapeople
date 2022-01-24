@@ -408,8 +408,8 @@ jobs:
             --stack-name ProdEnv \
             --parameter-overrides WorkflowID="${CIRCLE_WORKFLOW_ID:0:7}" \
             --tags project=udapeople
-            echo OldWorkflowID = "${OldWorkflowID}"
-            echo Current Workflow Id: "${CIRCLE_WORKFLOW_ID:0:7}"
+            echo OldWorkflowID = $OldWorkflowID
+            echo Current Workflow Id: ${CIRCLE_WORKFLOW_ID:0:7}
       - persist_to_workspace:
           root: ~/
           paths:
@@ -445,7 +445,7 @@ jobs:
       - run:
           name: Remove old stacks and files
           command: |
-            if [[ "udapeople-${CIRCLE_WORKFLOW_ID:0:7}" != "$($OldWorkflowID)" ]]
+            if [[ "${CIRCLE_WORKFLOW_ID:0:7}" != "$($OldWorkflowID)" ]]
             then
               echo "delete confirmed"
               aws cloudformation delete-stack --stack-name "udapeople-frontend-${OldWorkflowID}"
